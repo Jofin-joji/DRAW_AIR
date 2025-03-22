@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hand Drawing with MediaPipe and Python</title>
+    <title>Hand Drawing with MediaPipe - Advanced</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
@@ -11,26 +11,41 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hand Drawing with MediaPipe and Python</h1>
-        <div class="drawing-area">
-            <canvas id="drawingCanvas" width="1000" height="700"></canvas>
-            <video id="videoElement" width="320" height="240" autoplay muted></video>
-        </div>
-        <div class="controls">
-            <button id="clearButton">Clear Canvas</button>
-            <label for="colorPicker">Color:</label>
-            <input type="color" id="colorPicker" value="#000000">
-            <label for="lineWidth">Line Width:</label>
-            <input type="number" id="lineWidth" value="3" min="1" max="20">
-            <select id="shapeSelector">
-                <option value="line">Line</option>
-                <option value="rectangle">Rectangle</option>
-                <option value="circle">Circle</option>
-                <option value="triangle">Triangle</option>
-                <option value="square">Square</option>
-            </select>
-            <button id="saveButton">Save Image</button>
-        </div>
+        <main class="main-content">
+            <canvas id="drawingCanvas" width="1600" height="900"></canvas>
+        </main>
+
+        <aside class="sidebar">
+            <div class="camera-preview">
+                <video id="videoElement" width="320" height="240" autoplay muted></video>
+            </div>
+
+            <div class="shape-selection-window">
+                <h2>Select Shape</h2>
+                <div class="shape-options">
+                  <img src="{{ url_for('static', filename='images/line.png') }}" data-shape="line" alt="Line" class="shape-image" id="lineShape">
+                  <img src="{{ url_for('static', filename='images/rectangle.png') }}" data-shape="rectangle" alt="Rectangle" class="shape-image" id="rectangleShape">
+                  <img src="{{ url_for('static', filename='images/circle.png') }}" data-shape="circle" alt="Circle" class="shape-image" id = "circleShape">
+                  <img src="{{ url_for('static', filename='images/triangle.png') }}" data-shape="triangle" alt="Triangle" class="shape-image" id = "triangleShape">
+                  <img src="{{ url_for('static', filename='images/square.png') }}" data-shape="square" alt="Square" class="shape-image" id = "squareShape">
+                  <img src="{{ url_for('static', filename='images/pentagon.png') }}" data-shape="pentagon" alt="Pentagon" class="shape-image" id = "pentagonShape">
+                  <img src="{{ url_for('static', filename='images/hexagon.png') }}" data-shape="hexagon" alt="Hexagon" class="shape-image" id="hexagonShape">
+                  <img src="{{ url_for('static', filename='images/octagon.png') }}" data-shape="octagon" alt="Octagon" class="shape-image" id="octagonShape">
+                  <img src="{{ url_for('static', filename='images/nonagon.png') }}" data-shape="nonagon" alt="Nonagon" class="shape-image" id="nonagonShape">
+                  <img src="{{ url_for('static', filename='images/left_arrow.png') }}" data-shape="arrow_left" alt="Arrow Left" class="shape-image" id="arrowLeftShape">
+                  <img src="{{ url_for('static', filename='images/arrows-bidirectional.png') }}" data-shape="arrow_bidirectional" alt="Arrow Bidirectional" class="shape-image" id="arrowBidirectionalShape">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="clearButton">Clear Canvas</button>
+                <label for="colorPicker">Color:</label>
+                <input type="color" id="colorPicker" value="#000000">
+                <label for="lineWidth">Line Width:</label>
+                <input type="number" id="lineWidth" value="3" min="1" max="20">
+                <button id="saveButton">Save Image</button>
+            </div>
+        </aside>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
