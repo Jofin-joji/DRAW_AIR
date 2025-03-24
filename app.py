@@ -5,6 +5,7 @@ import mediapipe as mp
 from flask_cors import CORS
 
 app = Flask(__name__)  # Use __name__ instead of name
+
 app.static_folder = 'static'
 app.template_folder = 'templates'
 
@@ -18,7 +19,7 @@ min_detection_confidence=0.7,
 min_tracking_confidence=0.7)
 
 def detect_pinch(landmarks):
-    """Detects a pinch gesture based on the distance between thumb and index finger tips."""
+    """Detects a pinch gesture based on the distance between thumb and index finge"""
     thumb_tip = landmarks.landmark[4]
     index_tip = landmarks.landmark[8]
     distance = np.sqrt((index_tip.x - thumb_tip.x)**2 + (index_tip.y - thumb_tip.y)**2)
