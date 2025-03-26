@@ -19,7 +19,7 @@ min_detection_confidence=0.7,
 min_tracking_confidence=0.7)
 
 def detect_pinch(landmarks):
-    """Detects a pinch gesture based on the distance between thumb and index finge"""
+    """Detects a pinch gesture based on the distance between thumb and index finger"""
     thumb_tip = landmarks.landmark[4]
     index_tip = landmarks.landmark[8]
     distance = np.sqrt((index_tip.x - thumb_tip.x)**2 + (index_tip.y - thumb_tip.y)**2)
@@ -30,7 +30,7 @@ def detect_pinch(landmarks):
 def process_frame():
     data = request.get_json()
     frame_data = data['frame']
-    shape = data['shape']  #Shape information is not necessary from the server, can be done in the client side
+    shape = data['shape']  
     isDrawing = data["isDrawing"]
     start_x = data["startX"]
     start_y = data["startY"]
@@ -73,6 +73,7 @@ def process_frame():
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
